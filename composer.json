@@ -5,12 +5,12 @@
     "license": "BSD-2-Clause",
     "authors": [
         {
-            "name": "maknz",
-            "email": "github@mak.geek.nz"
+            "name": "Rocco Howard",
+            "email": "rocco@bluora.com.au"
         },
         {
-            "name": "therocis",
-            "email": "rocco@hnh.digital"
+            "name": "maknz",
+            "email": "github@mak.geek.nz"
         }
     ],
     "require": {
