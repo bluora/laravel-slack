@@ -1,5 +1,5 @@
 {
-    "name": "bluora/slack-laravel",
+    "name": "bluora/laravel-slack",
     "description": "Laravel 5 integration for the bluora/php-slack package, including facades and service providers.",
     "keywords": ["slack", "laravel"],
     "license": "BSD-2-Clause",
