@@ -21,6 +21,5 @@
         "psr-4": {
             "Bluora\\LaravelSlack\\": "src/"
         }
-    },
-    "minimum-stability": "stable"
+    }
 }
