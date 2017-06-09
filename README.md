@@ -7,7 +7,7 @@
  |_____/|_|\__,_|\___|_|\_\ |_| \___/|_|    |______\__,_|_|  \__,_| \_/ \___|_|
                                                                                
 ```
-Provides [Slack for PHP](https://github.com/bluora/php-slack) for Laravel.
+Provides [Slack](https://github.com/bluora/php-slack) for Laravel.
 
 [![Latest Stable Version](https://poser.pugx.org/bluora/laravel-slack/v/stable.svg)](https://packagist.org/packages/bluora/laravel-slack) [![Total Downloads](https://poser.pugx.org/bluora/laravel-slack/downloads.svg)](https://packagist.org/packages/bluora/laravel-slack) [![Latest Unstable Version](https://poser.pugx.org/bluora/laravel-slack/v/unstable.svg)](https://packagist.org/packages/bluora/laravel-slack) [![Built for Laravel](https://img.shields.io/badge/Built_for-Laravel-green.svg)](https://laravel.com/) [![License](https://poser.pugx.org/bluora/laravel-slack/license.svg)](https://packagist.org/packages/bluora/laravel-slack)
 
