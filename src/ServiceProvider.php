@@ -31,25 +31,15 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     }
 
     /**
-     * Bootstrap the application events.
-     *
-     * @return void
-     */
-    public function boot()
-    {
-        $this->publishes([__DIR__.'/../config/config.php' => config_path('slack.php')]);
-    }
-
-    /**
      * Register the service provider.
      *
      * @return void
      */
     public function register()
     {
-        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'slack');
+        $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'slack');
 
-        $this->app->singleton('maknz.slack', function ($app) {
+        $this->app->singleton('bluora.slack', function ($app) {
             return new Client(
                 $app['config']->get('slack.endpoint'),
                 [
@@ -67,6 +57,18 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         });
 
         $this->app->bind('Bluora\Slack\Client', 'bluora.slack');
+    }
+
+    /**
+     * Bootstrap the application events.
+     *
+     * @return void
+     */
+    public function boot()
+    {
+        $this->publishes([
+            __DIR__.'/../config/config.php' => config_path('slack.php'),
+        ]);
     }
 
     /**
