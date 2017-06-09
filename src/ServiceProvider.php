@@ -1,8 +1,6 @@
 <?php
 
-namespace Maknz\Slack\Laravel;
-
-use RuntimeException;
+namespace Bluora\LaravelSlack;
 
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
@@ -29,8 +27,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
     public function __construct($app)
     {
         parent::__construct($app);
-
-        $this->provider = $this->getProvider();
     }
 
     /**
@@ -40,7 +36,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function boot()
     {
-        return $this->provider->boot();
+        $this->publishes([__DIR__.'/../config/config.php' => config_path('slack.php')]);
     }
 
     /**
@@ -50,30 +46,26 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function register()
     {
-        return $this->provider->register();
-    }
+        $this->mergeConfigFrom(__DIR__.'/config/config.php', 'slack');
 
-    /**
-     * Return the service provider for the particular Laravel version.
-     *
-     * @return mixed
-     */
-    private function getProvider()
-    {
-        $app = $this->app;
+        $this->app->singleton('maknz.slack', function ($app) {
+            return new Client(
+                $app['config']->get('slack.endpoint'),
+                [
+                    'channel'                 => $app['config']->get('slack.channel'),
+                    'username'                => $app['config']->get('slack.username'),
+                    'icon'                    => $app['config']->get('slack.icon'),
+                    'link_names'              => $app['config']->get('slack.link_names'),
+                    'unfurl_links'            => $app['config']->get('slack.unfurl_links'),
+                    'unfurl_media'            => $app['config']->get('slack.unfurl_media'),
+                    'allow_markdown'          => $app['config']->get('slack.allow_markdown'),
+                    'markdown_in_attachments' => $app['config']->get('slack.markdown_in_attachments'),
+                ],
+                new Guzzle
+            );
+        });
 
-        $version = intval($app::VERSION);
-
-        switch ($version) {
-            case 4:
-              return new ServiceProviderLaravel4($app);
-
-            case 5:
-              return new ServiceProviderLaravel5($app);
-
-            default:
-              throw new RuntimeException('Your version of Laravel is not supported');
-        }
+        $this->app->bind('Bluora\Slack\Client', 'bluora.slack');
     }
 
     /**
@@ -83,6 +75,6 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
      */
     public function provides()
     {
-        return ['maknz.slack'];
+        return ['bluora.slack'];
     }
 }

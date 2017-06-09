@@ -1,6 +1,6 @@
 {
     "name": "bluora/laravel-slack",
-    "description": "Laravel 5 integration for the bluora/php-slack package, including facades and service providers.",
+    "description": "Laravel integration for the bluora/php-slack package.",
     "keywords": ["slack", "laravel"],
     "license": "BSD-2-Clause",
     "authors": [
@@ -17,9 +17,22 @@
         "php": ">=7.0.0",
         "bluora/php-slack": "dev-master"
     },
+    "require-dev": {
+        "phpmd/phpmd" : "@stable",
+        "squizlabs/php_codesniffer": "^2.0"
+    },    
     "autoload": {
         "psr-4": {
             "Bluora\\LaravelSlack\\": "src/"
         }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Bluora\\LaravelSlack\\Tests\\": "tests/"
+        }
+    },
+    "scripts": {
+        "test": "composer phpcs",
+        "phpcs": "./vendor/bin/phpcs -p -s --standard=PSR2 ./src"
     }
 }
