@@ -2,6 +2,8 @@
 
 namespace Bluora\LaravelSlack;
 
+use GuzzleHttp\Client as Guzzle;
+
 class ServiceProvider extends \Illuminate\Support\ServiceProvider
 {
     /**
@@ -40,7 +42,7 @@ class ServiceProvider extends \Illuminate\Support\ServiceProvider
         $this->mergeConfigFrom(__DIR__.'/../config/config.php', 'slack');
 
         $this->app->singleton('bluora.slack', function ($app) {
-            return new Client(
+            return new Slack(
                 $app['config']->get('slack.endpoint'),
                 [
                     'channel'                 => $app['config']->get('slack.channel'),
