@@ -2,11 +2,11 @@
 
 namespace Bluora\LaravelSlack;
 
-use Bluora\Slack\Client;
 use Bluora\Slack\ActionConfirmation;
 use Bluora\Slack\Attachment;
 use Bluora\Slack\AttachmentAction;
 use Bluora\Slack\AttachmentField;
+use Bluora\Slack\Client;
 
 class Slack extends Client
 {
