@@ -1,6 +1,6 @@
 {
-    "name": "bluora/laravel-slack",
-    "description": "Laravel integration for the bluora/php-slack package.",
+    "name": "hnhdigital-os/laravel-slack",
+    "description": "Laravel integration for the hnhdigital-os/php-slack package.",
     "keywords": ["slack", "laravel"],
     "license": "BSD-2-Clause",
     "authors": [
